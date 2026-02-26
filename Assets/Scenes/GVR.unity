@@ -329,6 +329,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6311514598022388616, guid: 8b235d83e92b0cb44a91c3f0184cb17b, type: 3}
   m_PrefabInstance: {fileID: 143243160}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &192384696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 192384697}
+  - component: {fileID: 192384698}
+  m_Layer: 3
+  m_Name: GameControl
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &192384697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192384696}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3, y: 32.6, z: -19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &192384698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192384696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd67c618f7f8de4db69f95cf3e11e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerBuilding
+  inputActions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  rayLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  barraksTower: {fileID: 883399911513694663, guid: 32f738dcf68af834c9641f6d400479df, type: 3}
 --- !u!1001 &204300886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1382,6 +1431,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerPlatform (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4150484263611344427, guid: e01e27fd76e625b44a35e1397cdcf61e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5709380071612245796, guid: e01e27fd76e625b44a35e1397cdcf61e, type: 3}
       propertyPath: m_LocalScale.y
       value: 2
@@ -1424,6 +1477,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5709380071612245796, guid: e01e27fd76e625b44a35e1397cdcf61e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5759930675862294309, guid: e01e27fd76e625b44a35e1397cdcf61e, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1498,38 +1555,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9146062236824061595, guid: bac7a4ec05ada4f4aba2d3ef0e925b76, type: 3}
   m_PrefabInstance: {fileID: 612355149}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &672250716
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 672250717}
-  m_Layer: 0
-  m_Name: CameraPivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &672250717
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 672250716}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 15}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1690783307}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &709060423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4276,11 +4301,11 @@ Transform:
   m_GameObject: {fileID: 1690783303}
   serializedVersion: 2
   m_LocalRotation: {x: 0.46259987, y: -0, z: -0, w: 0.8865672}
-  m_LocalPosition: {x: 4, y: 32.6, z: -25}
+  m_LocalPosition: {x: 3, y: 32.6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 672250717}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 55.11, y: 0, z: 0}
 --- !u!1001 &1693447826
 PrefabInstance:
@@ -4627,6 +4652,10 @@ PrefabInstance:
     - target: {fileID: 4150484263611344427, guid: e01e27fd76e625b44a35e1397cdcf61e, type: 3}
       propertyPath: m_Name
       value: TowerPlatform (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150484263611344427, guid: e01e27fd76e625b44a35e1397cdcf61e, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 5709380071612245796, guid: e01e27fd76e625b44a35e1397cdcf61e, type: 3}
       propertyPath: m_LocalScale.y
@@ -5443,4 +5472,5 @@ SceneRoots:
   - {fileID: 207829936}
   - {fileID: 1686821908}
   - {fileID: 1207661765}
-  - {fileID: 672250717}
+  - {fileID: 1690783307}
+  - {fileID: 192384697}
