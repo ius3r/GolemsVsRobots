@@ -27,14 +27,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4374560903380395313}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5228401, y: -0, z: -0, w: 0.8524309}
-  m_LocalPosition: {x: 54.637794, y: 10, z: -100}
+  m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
+  m_LocalPosition: {x: 0, y: 100, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2643801609070730517}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 63.046, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 65, y: 0, z: 0}
 --- !u!20 &2532048564666218745
 Camera:
   m_ObjectHideFlags: 0
@@ -142,10 +142,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee1bf92faed3134ca61fc0a4f5363a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RTSCameraController
-  moveSpeed: 25
-  edgeSize: 15
+  moveSpeed: 30
+  edgeSize: 75
   xLimits: {x: -100, y: 100}
   zLimits: {x: -100, y: 100}
+  unitLayer:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &5122327724064596055
 GameObject:
   m_ObjectHideFlags: 0

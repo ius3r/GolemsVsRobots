@@ -1,18 +1,34 @@
+using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 
 public class RTSCameraController : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField]private float moveSpeed = 25f;
-    [SerializeField]private float edgeSize = 15f; // Distance from screen edge to start moving
+    [SerializeField]private float moveSpeed = 30f;
+    [SerializeField]private float edgeSize = 75f; // Distance from screen edge to start moving
 
     [Header("Map Limits")]
     [SerializeField]private Vector2 xLimits = new Vector2(-100, 100);
     [SerializeField]private Vector2 zLimits = new Vector2(-100, 100);
 
+    [Header("Unit Selection")]
+    [SerializeField]private LayerMask unitLayer;
+    [SerializeField]private float UnitRotationSpeed = 100f;
+
+    private Camera cam;
+    private List<GameObject> selectedUnits = new List<GameObject>();
+    private GameObject selectedUnit;
+
+    void Start()
+    {
+        cam = GetComponent<Camera>();
+    }
+
     void Update()
     {
-        HandleMovement();
+       HandleMovement();
+        SelectUnits();
     }
 
     void HandleMovement()
@@ -38,16 +54,44 @@ public class RTSCameraController : MonoBehaviour
         }
         if (Input.GetMouseButton(2))
         {
-            float h = -Input.GetAxis("Mouse X") * moveSpeed;
-            float v = -Input.GetAxis("Mouse Y") * moveSpeed;
-
-            pos += new Vector3(h, 0, v) * Time.deltaTime;
+            if(selectedUnit != null)
+            {
+                RotateAroundTarget();
+            }
         }
 
         // Clamp inside map
         pos.x = Mathf.Clamp(pos.x, xLimits.x, xLimits.y);
         pos.z = Mathf.Clamp(pos.z, zLimits.x, zLimits.y);
-        Debug.Log($"Camera Position: {pos}");
         transform.position = pos;
+    }
+
+    void SelectUnits()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            foreach (var unit in selectedUnits)
+            {
+                //Deselect previously selected units
+            }
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 1000f, unitLayer))
+            {
+                if (hit.collider)
+                {
+                    selectedUnit = hit.collider.gameObject;
+                    if (!selectedUnits.Contains(hit.collider.gameObject))
+                    {
+                        selectedUnits.Add(hit.collider.gameObject);
+                        Debug.Log("Selected unit: " + hit.collider.gameObject.name);
+                    }
+                }
+            }
+        }
+    }
+    void RotateAroundTarget()
+    {
+        transform.RotateAround(selectedUnit.transform.position, Vector3.up, 1f * UnitRotationSpeed * Time.deltaTime);
     }
 }
