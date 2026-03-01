@@ -125,4 +125,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerPlatform
   normalMaterial: {fileID: 2100000, guid: cd8b8ce4f91d41e4197d28384eb981c7, type: 2}
+  hoveredMaterial: {fileID: 2100000, guid: b5ace725f3152d04ca86e86d92311d97, type: 2}
   selectedMaterial: {fileID: 2100000, guid: b5ace725f3152d04ca86e86d92311d97, type: 2}
