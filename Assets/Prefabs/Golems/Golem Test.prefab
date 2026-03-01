@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91a17c6494473e4cbb399ef4faa7255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AICombat
-  attackRange: 2
+  attackRange: 3
   attackCooldownSeconds: 1
   damagePerAttack: 10
   stopToAttack: 1
