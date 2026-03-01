@@ -8,13 +8,13 @@ public class TowerBuilding : MonoBehaviour
     public static float buildHeight;
     private InputAction clickAction, buildAction, rotateAction, mousePosition;
     [SerializeField] private LayerMask rayLayer;
-    [SerializeField] private GameObject barraksTower;
+    [SerializeField] private GameObject barraksTower, beamTower;
 
     private TowerPlatform selectedPlatform;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        buildHeight = 4.5f;
+        buildHeight = 3.2f;
         clickAction = inputActions.FindAction("MouseClick");
         clickAction.performed += CastMouseRay;
         mousePosition = inputActions.FindAction("MousePosition");
@@ -61,7 +61,7 @@ public class TowerBuilding : MonoBehaviour
         {
             Debug.Log("Build Performed");
             if (selectedPlatform != null)
-                selectedPlatform.buildTower(barraksTower);
+                selectedPlatform.buildTower(beamTower);
         }
     }
 
