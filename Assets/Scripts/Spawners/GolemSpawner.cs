@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public sealed class GolemSpawner : MonoBehaviour
 {
     [Header("Prefab / Spawn")]
-    [SerializeField] private GameObject golemPrefab;
+    [FormerlySerializedAs("golemPrefab")]
+    [SerializeField] private GameObject prefabToSpawn;
     [SerializeField] private Transform spawnPoint;
 
     [Header("Difficulty (spawn more frequently over time)")]
@@ -65,10 +67,10 @@ public sealed class GolemSpawner : MonoBehaviour
 
     private void SpawnOne()
     {
-        if (golemPrefab == null) return;
+        if (prefabToSpawn == null) return;
 
         Transform point = spawnPoint != null ? spawnPoint : transform;
-        Instantiate(golemPrefab, point.position, point.rotation);
+        Instantiate(prefabToSpawn, point.position, point.rotation);
     }
 
     private void OnValidate()
