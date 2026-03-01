@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class RTSCameraController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField]private float moveSpeed = 30f;
@@ -15,20 +15,49 @@ public class RTSCameraController : MonoBehaviour
     [Header("Unit Selection")]
     [SerializeField]private LayerMask unitLayer;
     [SerializeField]private float UnitRotationSpeed = 100f;
-
-    private Camera cam;
     private List<GameObject> selectedUnits = new List<GameObject>();
     private GameObject selectedUnit;
 
+    [Header("Towers")]
+    [SerializeField] private List<GameObject> TowerPrefabs = new List<GameObject>();
+
+    [Header("Crystals")]
+    [SerializeField] private int Crystals = 100;
+    [SerializeField] [Range(0, 100)] private int CrystalsPerSecond = 1;
+
+    [Header("UI")]
+    [SerializeField] private Canvas PlayerCanvas;
+    [SerializeField] private Text CrystalText;
+
+    private Camera cam;
+
+    public void SetCrystals(int amount)
+    {
+        Crystals = amount;
+        CrystalText.text = "Crystals: " + Crystals;
+    }
+
+    private void Awake()
+    {
+        if (TowerPrefabs.Count == 0)
+        {
+            Debug.LogWarning("No tower prefabs assigned in the inspector.");
+        }
+    }
+  
     void Start()
     {
         cam = GetComponent<Camera>();
+        PlayerCanvas = GetComponent<Canvas>();
+        StartCoroutine(GenerateCrystalsOverTime());
     }
 
     void Update()
     {
-       HandleMovement();
+        HandleMovement();
         SelectUnits();
+        SpawnTowers();
+
     }
 
     void HandleMovement()
@@ -94,4 +123,36 @@ public class RTSCameraController : MonoBehaviour
     {
         transform.RotateAround(selectedUnit.transform.position, Vector3.up, 1f * UnitRotationSpeed * Time.deltaTime);
     }
+
+
+    void SpawnTowers()
+    {
+        if (Input.GetMouseButtonDown(1) && TowerPrefabs.Count > 0)
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 1000f))
+            {
+                if (hit.collider)
+                {
+                    Vector3 spawnPos = hit.point;
+                    spawnPos.y += 0.5f; // Adjust height if needed
+                    GameObject towerToSpawn = TowerPrefabs[Random.Range(0, TowerPrefabs.Count)];
+                    Instantiate(towerToSpawn, spawnPos, Quaternion.identity);
+                    Debug.Log("Spawned tower at: " + spawnPos);
+                }
+            }
+        }
+    }
+
+   IEnumerator<WaitForSeconds> GenerateCrystalsOverTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            Crystals += CrystalsPerSecond;
+            CrystalText.text = "Crystals: " + Crystals;
+            Debug.Log("Crystals: " + Crystals);
+        }
+    } 
 }
