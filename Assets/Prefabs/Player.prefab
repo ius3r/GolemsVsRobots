@@ -107,7 +107,7 @@ Transform:
   m_GameObject: {fileID: 4374560903380395313}
   serializedVersion: 2
   m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
-  m_LocalPosition: {x: 0, y: 100, z: 0}
+  m_LocalPosition: {x: 0, y: 35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -230,7 +230,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   UnitRotationSpeed: 100
-  TowerPrefabs: []
+  TowerPrefabs:
+  - {fileID: 883399911513694663, guid: 32f738dcf68af834c9641f6d400479df, type: 3}
+  - {fileID: 8685764252069962854, guid: 113a170ff45974e4fb946e167c7da9cb, type: 3}
   Crystals: 100
   CrystalsPerSecond: 1
   PlayerCanvas: {fileID: 912728014698447761}
