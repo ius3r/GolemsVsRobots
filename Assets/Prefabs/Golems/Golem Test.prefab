@@ -283,7 +283,6 @@ MonoBehaviour:
   acquireRadius: 100
   retargetIntervalSeconds: 0.25
   includeTriggerColliders: 1
-  debugTargeting: 0
 --- !u!114 &7752567787995712557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,6 +297,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health
   maxHealth: 100
   destroyOnDeath: 1
+  deathSfx: {fileID: 8300000, guid: 47e7a435eadc5b245bb4eed045699d91, type: 3}
+  deathSfxVolume: 1
 --- !u!114 &-3374402128496909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,6 +315,8 @@ MonoBehaviour:
   attackCooldownSeconds: 1
   damagePerAttack: 10
   stopToAttack: 1
+  attackSfx: {fileID: 8300000, guid: 0571cb1bff123f942badbacfe6c9833a, type: 3}
+  attackSfxVolume: 1
 --- !u!114 &2516376706749574755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4728b9104e15e414c8e9522dc91c40f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIAnimationController
+  idleController: {fileID: 0}
   walkingController: {fileID: 9100000, guid: b91f59b67a1722f4b9c63483ce2f2f00, type: 2}
   attackingController: {fileID: 9100000, guid: 0b19fc1d3402bdf4eb6d7a50a3c19489, type: 2}
 --- !u!4 &749788544184070192 stripped
