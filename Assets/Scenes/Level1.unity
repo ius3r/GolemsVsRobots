@@ -6080,22 +6080,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 803301026910877674, guid: a0677ac1fbaaeba42aa6af0671d6da4f, type: 3}
-      propertyPath: xLimits.x
-      value: -20
-      objectReference: {fileID: 0}
-    - target: {fileID: 803301026910877674, guid: a0677ac1fbaaeba42aa6af0671d6da4f, type: 3}
-      propertyPath: xLimits.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 803301026910877674, guid: a0677ac1fbaaeba42aa6af0671d6da4f, type: 3}
-      propertyPath: zLimits.x
-      value: -20
-      objectReference: {fileID: 0}
-    - target: {fileID: 803301026910877674, guid: a0677ac1fbaaeba42aa6af0671d6da4f, type: 3}
-      propertyPath: zLimits.y
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 2532048564666218745, guid: a0677ac1fbaaeba42aa6af0671d6da4f, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 255

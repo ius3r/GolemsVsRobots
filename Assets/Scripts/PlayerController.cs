@@ -63,32 +63,43 @@ public class PlayerController : MonoBehaviour
     void HandleMovement()
     {
         Vector3 pos = transform.position;
-
-        // Mouse edge movement
-        if (Input.mousePosition.x >= Screen.width - edgeSize)
-        {
-            pos.x += moveSpeed * Time.deltaTime;
-        } 
-        if (Input.mousePosition.x <= edgeSize)
-        {
-            pos.x -= moveSpeed * Time.deltaTime;
-        }
-        if (Input.mousePosition.y >= Screen.height - edgeSize)
-        {
-            pos.z += moveSpeed * Time.deltaTime;
-        }
-        if (Input.mousePosition.y <= edgeSize)
-        {
-            pos.z -= moveSpeed * Time.deltaTime;
-        }
         if (Input.GetMouseButton(2))
         {
             if(selectedUnit != null)
             {
                 RotateAroundTarget();
             }
+            Vector3 forward = transform.forward;
+            if (Input.mousePosition.y >= Screen.height - edgeSize)
+            {
+                pos += forward * moveSpeed * Time.deltaTime;
+            }
+            if (Input.mousePosition.y <= edgeSize)
+            {
+                pos -= forward * moveSpeed * Time.deltaTime;
+            }
         }
-
+        else
+        {
+            // Mouse edge movement
+            if (Input.mousePosition.x >= Screen.width - edgeSize)
+            {
+                pos.x += moveSpeed * Time.deltaTime;
+            } 
+            if (Input.mousePosition.x <= edgeSize)
+            {
+                pos.x -= moveSpeed * Time.deltaTime;
+            }
+            if (Input.mousePosition.y >= Screen.height - edgeSize)
+            {
+                pos.z += moveSpeed * Time.deltaTime;
+            }
+            if (Input.mousePosition.y <= edgeSize)
+            {
+                pos.z -= moveSpeed * Time.deltaTime;
+            }
+        }
+     
         // Clamp inside map
         pos.x = Mathf.Clamp(pos.x, xLimits.x, xLimits.y);
         pos.z = Mathf.Clamp(pos.z, zLimits.x, zLimits.y);

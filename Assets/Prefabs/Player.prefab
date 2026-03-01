@@ -224,11 +224,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RTSCameraController
   moveSpeed: 30
   edgeSize: 75
-  xLimits: {x: -100, y: 100}
-  zLimits: {x: -100, y: 100}
+  xLimits: {x: -30, y: 30}
+  zLimits: {x: -30, y: 30}
   unitLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 257
   UnitRotationSpeed: 100
   TowerPrefabs:
   - {fileID: 883399911513694663, guid: 32f738dcf68af834c9641f6d400479df, type: 3}
